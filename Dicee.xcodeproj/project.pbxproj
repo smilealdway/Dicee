@@ -13,6 +13,8 @@
 		027D168E26C5B176009CCB06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027D168D26C5B176009CCB06 /* Assets.xcassets */; };
 		027D169126C5B176009CCB06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027D169026C5B176009CCB06 /* Preview Assets.xcassets */; };
 		027D169426C5B176009CCB06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027D169226C5B176009CCB06 /* LaunchScreen.storyboard */; };
+		0288C65B26D6B20D008FBC5E /* DiceSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0288C65A26D6B20C008FBC5E /* DiceSound.mp3 */; };
+		0288C65D26D7F0DF008FBC5E /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288C65C26D7F0DE008FBC5E /* AudioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		027D169026C5B176009CCB06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		027D169326C5B176009CCB06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		027D169526C5B176009CCB06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0288C65A26D6B20C008FBC5E /* DiceSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DiceSound.mp3; sourceTree = "<group>"; };
+		0288C65C26D7F0DE008FBC5E /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +63,9 @@
 				027D168726C5B172009CCB06 /* AppDelegate.swift */,
 				027D168926C5B172009CCB06 /* SceneDelegate.swift */,
 				027D168B26C5B172009CCB06 /* ContentView.swift */,
+				0288C65C26D7F0DE008FBC5E /* AudioPlayer.swift */,
 				027D168D26C5B176009CCB06 /* Assets.xcassets */,
+				0288C65A26D6B20C008FBC5E /* DiceSound.mp3 */,
 				027D169226C5B176009CCB06 /* LaunchScreen.storyboard */,
 				027D169526C5B176009CCB06 /* Info.plist */,
 				027D168F26C5B176009CCB06 /* Preview Content */,
@@ -133,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027D169426C5B176009CCB06 /* LaunchScreen.storyboard in Resources */,
+				0288C65B26D6B20D008FBC5E /* DiceSound.mp3 in Resources */,
 				027D169126C5B176009CCB06 /* Preview Assets.xcassets in Resources */,
 				027D168E26C5B176009CCB06 /* Assets.xcassets in Resources */,
 			);
@@ -148,6 +155,7 @@
 				027D168826C5B172009CCB06 /* AppDelegate.swift in Sources */,
 				027D168A26C5B172009CCB06 /* SceneDelegate.swift in Sources */,
 				027D168C26C5B172009CCB06 /* ContentView.swift in Sources */,
+				0288C65D26D7F0DF008FBC5E /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
