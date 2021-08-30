@@ -16,6 +16,8 @@ struct ContentView: View {
     let soundFileURL = Bundle.main.url(forResource: "DiceSound", withExtension: "mp3")
     //let soundFileURL = URL(string: "https://www.fesliyanstudios.com/play-mp3/4933")
     @State var audioPlayer: AVAudioPlayer?
+    @State var timer = Timer()
+    @State var count = 0
     
     var body: some View {
         ZStack{
@@ -31,16 +33,17 @@ struct ContentView: View {
                 }
                 .padding(.horizontal)
                 Spacer()
-                Button(action: {
+                Button(action: { [self] in
                     do {
                         try audioPlayer = AVAudioPlayer(contentsOf: soundFileURL!)
-                        //audioPlayer!.prepareToPlay()
                         audioPlayer!.play()
                     }catch {
                         print(error)
                     }
+                    sleep(2)
                     self.leftDiceNumber = Int.random(in: 1...6)
                     self.rightDiceNumber = Int.random(in: 1...6)
+//                    timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: Selector(("rollDice")), userInfo: nil, repeats: true)
                     
                 }) {
                     Text("Roll")
@@ -54,6 +57,14 @@ struct ContentView: View {
             }
         }
     }
+//    func rollDice(){
+//        if count > 5 {
+//            timer.invalidate()
+//            return
+//        }
+//        self.leftDiceNumber = Int.random(in: 1...6)
+//        self.rightDiceNumber = Int.random(in: 1...6)
+//    }
 }
 
 struct DiceView: View {
@@ -66,10 +77,10 @@ struct DiceView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
 
 
