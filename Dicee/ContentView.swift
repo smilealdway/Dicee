@@ -40,7 +40,7 @@ struct ContentView: View {
                     }catch {
                         print(error)
                     }
-                    sleep(2)
+                    sleep(UInt32(audioPlayer!.duration))
                     self.leftDiceNumber = Int.random(in: 1...6)
                     self.rightDiceNumber = Int.random(in: 1...6)
 //                    timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: Selector(("rollDice")), userInfo: nil, repeats: true)
