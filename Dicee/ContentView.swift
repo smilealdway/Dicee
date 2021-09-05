@@ -15,9 +15,13 @@ struct ContentView: View {
 
     let soundFileURL = Bundle.main.url(forResource: "DiceSound", withExtension: "mp3")
     //let soundFileURL = URL(string: "https://www.fesliyanstudios.com/play-mp3/4933")
-    @State var audioPlayer: AVAudioPlayer?
+    @StateObject var audioPlayer = AudioPlayer()
     @State var timer = Timer()
     @State var count = 0
+    
+    func handleRollEvent() -> Void {
+        audioPlayer.playAudio()
+    }
     
     var body: some View {
         ZStack{
@@ -28,24 +32,12 @@ struct ContentView: View {
                 Image("diceeLogo")
                 Spacer()
                 HStack{
-                    DiceView(n: leftDiceNumber)
-                    DiceView(n: rightDiceNumber)
+                    DiceView(diceRolleComplete: audioPlayer.hasPlayingStopped)
+                    DiceView(diceRolleComplete: audioPlayer.hasPlayingStopped)
                 }
                 .padding(.horizontal)
                 Spacer()
-                Button(action: { [self] in
-                    do {
-                        try audioPlayer = AVAudioPlayer(contentsOf: soundFileURL!)
-                        audioPlayer!.play()
-                    }catch {
-                        print(error)
-                    }
-                    sleep(UInt32(audioPlayer!.duration))
-                    self.leftDiceNumber = Int.random(in: 1...6)
-                    self.rightDiceNumber = Int.random(in: 1...6)
-//                    timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: Selector(("rollDice")), userInfo: nil, repeats: true)
-                    
-                }) {
+                Button(action: handleRollEvent) {
                     Text("Roll")
                         .font(.system(size: 50))
                         .fontWeight(.heavy)
@@ -57,20 +49,12 @@ struct ContentView: View {
             }
         }
     }
-//    func rollDice(){
-//        if count > 5 {
-//            timer.invalidate()
-//            return
-//        }
-//        self.leftDiceNumber = Int.random(in: 1...6)
-//        self.rightDiceNumber = Int.random(in: 1...6)
-//    }
 }
 
 struct DiceView: View {
-    let n: Int
+    let diceRolleComplete: Int
     var body: some View {
-        Image("dice\(n)")
+        Image("dice\(Int.random(in: 1...6))")
             .resizable()
             .aspectRatio(1, contentMode: .fit)
             .padding(10)

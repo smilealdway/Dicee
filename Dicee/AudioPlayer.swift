@@ -7,23 +7,26 @@
 import AVFoundation
 import Foundation
 
-struct AudioPlayer {
+class AudioPlayer:NSObject,ObservableObject,AVAudioPlayerDelegate {
     let soundFileURL = Bundle.main.url(forResource: "DiceSound", withExtension: "mp3")
+    @Published var hasPlayingStopped = 0
+    var audioPlayer: AVAudioPlayer?
     
-    func playDiceSound(){
-        //URL(string: url)
-        
+    override init() {
         do {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-//            try AVAudioSession.sharedInstance().setActive(true)
-            let player = try AVAudioPlayer(contentsOf: soundFileURL!)
-            player.prepareToPlay()
-            player.play()
-            print("sound played")
+            try audioPlayer = AVAudioPlayer(contentsOf: soundFileURL!)
         } catch {
             print(error)
         }
+        
     }
     
+    func playAudio() -> Void {
+        audioPlayer?.delegate = self
+        audioPlayer!.play()
+    }
     
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        hasPlayingStopped += 1;
+    }
 }
